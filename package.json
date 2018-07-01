@@ -1,6 +1,6 @@
 {
-  "name": "hello-world",
-  "version": "0.0.0",
+  "name": "hello-angular",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
