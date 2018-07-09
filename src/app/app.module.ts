@@ -1,8 +1,7 @@
+import { HttpModule } from '@angular/http'
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
+import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { TesteClassComponent } from './teste-class/teste-class.component';
@@ -17,8 +16,11 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component';
 import { CourseComponent } from './course/course.component';
 import { ChangepasswordformComponent } from './changepassword-form/changepasswordform.component';
-
-
+import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
+import { GithubfollowersComponent } from './githubfollowers/githubfollowers.component';
+import { GithubService } from './services/github.services';
 
 @NgModule({
   declarations: [
@@ -33,14 +35,23 @@ import { ChangepasswordformComponent } from './changepassword-form/changepasswor
     TemplatedrivenformComponent,
     CourseComponent,
     ChangepasswordformComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PostsComponent,
+    GithubfollowersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [AuthorsService, CoursesService],
+  providers: [
+    AuthorsService,
+    CoursesService,
+    PostService,
+    GithubService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
